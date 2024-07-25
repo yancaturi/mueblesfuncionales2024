@@ -12,7 +12,8 @@ class MueblesController extends Controller
      */
     public function index()
     {
-        //
+        $productos = Muebles::all();
+        return view("welcome", ["productos" => $productos]);
     }
 
     /**
@@ -34,9 +35,10 @@ class MueblesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Muebles $muebles)
+    public function show($id)
     {
-        //
+        $productos = Muebles::find($id);
+        return view("detalle", compact("productos"));
     }
 
     /**

@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+  //  return view('welcome');
+//});
+
+Route::resource("productos", App\Http\Controllers\MueblesController::class);
+Route::resource("/productos/{id}",App\Http\Controllers\MueblesController::class);
