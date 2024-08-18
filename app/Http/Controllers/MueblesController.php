@@ -13,7 +13,7 @@ class MueblesController extends Controller
     public function index()
     {
         $productos = Muebles::all();
-        return view("welcome", ["productos" => $productos]);
+        return view('productos.index', compact('productos'));
     }
 
     /**
@@ -21,7 +21,7 @@ class MueblesController extends Controller
      */
     public function create()
     {
-        //
+        return view('productos.create');
     }
 
     /**
@@ -29,7 +29,8 @@ class MueblesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Muebles::create($request->all());
+        return redirect()->route('productos.index');
     }
 
     /**
@@ -37,16 +38,15 @@ class MueblesController extends Controller
      */
     public function show($id)
     {
-        $productos = Muebles::find($id);
-        return view("detalle", compact("productos"));
+       //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Muebles $muebles)
+    public function edit(Muebles $producto)
     {
-        //
+        return view("productos.edit", compact("producto"));
     }
 
     /**
@@ -54,14 +54,16 @@ class MueblesController extends Controller
      */
     public function update(Request $request, Muebles $muebles)
     {
-        //
+        $producto->update($request->all());
+        return redirect()->route('productos.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Muebles $muebles)
+    public function destroy(Muebles $producto)
     {
-        //
+        $producto->delete();
+        return redirect()->route('productos.index');
     }
 }

@@ -17,7 +17,10 @@ class MueblesFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'nombre' => fake()->word(),
+            'descripcion' => fake()->text(),
+            'precio' => fake()->numberBetween(100000, 5000000),
+            'stock' => fake()->numberBetween(1,50)
         ];
     }
 }
